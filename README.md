@@ -138,7 +138,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tests\EndpointCheckKit.Tes
 pwsh -NoProfile -File .\tests\EndpointCheckKit.Tests.ps1
 ```
 
-- 외부 모듈(Pester) 없이 동작하는 테스트 러너입니다. Windows PowerShell 5.1 기본 Pester 3.x와 최신 Pester 5.x 문법 차이를 피하려고 직접 작성했습니다.
+- Windows 10 이상 기본 PowerShell 5.1에서 97개 검사 통과를 확인했습니다. 외부 모듈(Pester) 없이 동작하는 테스트 러너입니다. Windows PowerShell 5.1 기본 Pester 3.x와 최신 Pester 5.x 문법 차이를 피하려고 직접 작성했습니다.
 - 검사 내용: PowerShell 구문, 쓰기·네트워크 명령 금지 패턴(읽기 전용 가드), UTF-8 BOM, 21개 항목 판정(양호·취약·확인필요 경계값, 한국어 `net accounts` 출력, 비관리자 실행, 수집 오류 처리), 마스킹, HTML 이스케이프.
 - GitHub Actions(`windows-latest`)에서 Windows PowerShell 5.1과 PowerShell 7로 각각 실행하는 워크플로를 [ci/github-actions-ci.yml](ci/github-actions-ci.yml)에 두었습니다. 포크해서 쓸 때 `.github/workflows/`로 옮기면 동작합니다.
 
