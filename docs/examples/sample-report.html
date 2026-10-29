@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>엔드포인트 보안 점검 보고서</title>
+<style>
+body{font-family:'Malgun Gothic','Noto Sans KR','Noto Sans CJK KR',sans-serif;margin:0;padding:16px;background:#f5f7fa;color:#1f2933;font-size:14px}
+h1{font-size:20px;margin:0 0 4px}h2{font-size:16px;margin:24px 0 8px}.sub{color:#52606d;margin:0 0 16px}
+.cards{display:flex;gap:8px;flex-wrap:wrap}.card{flex:1;min-width:90px;background:#fff;border-radius:8px;padding:12px;border-top:4px solid #9aa5b1}
+.card b{display:block;font-size:24px}.card.ok{border-color:#2f9e44}.card.bad{border-color:#e03131}.card.chk{border-color:#f08c00}
+table{width:100%;border-collapse:collapse;background:#fff}th,td{border:1px solid #d9e2ec;padding:6px 8px;text-align:left;vertical-align:top}
+th{background:#e4e7eb}.b{display:inline-block;padding:2px 8px;border-radius:10px;color:#fff;font-weight:bold;white-space:nowrap}
+.b.ok{background:#2f9e44}.b.bad{background:#e03131}.b.chk{background:#f08c00}.wrap{overflow-x:auto}
+.note{color:#52606d;font-size:12px;margin-top:16px}.res td:first-child,.res td:nth-child(2),.res td:nth-child(3){white-space:nowrap}@media (max-width:760px){.res{min-width:820px}}
+</style></head><body>
+<h1>엔드포인트 보안 점검 보고서</h1>
+<p class="sub">Endpoint Security Check Kit v1.0.0 · 읽기 전용 점검 · 점검 시각 2026-10-29 15:35:06 (PC 로컬 시간)</p>
+<div class="cards">
+<div class="card"><span>전체</span><b>21</b></div>
+<div class="card ok"><span>양호</span><b>11</b></div>
+<div class="card bad"><span>취약</span><b>7</b></div>
+<div class="card chk"><span>확인필요</span><b>3</b></div>
+</div>
+<h2>점검 대상</h2>
+<div class="wrap"><table><tr><th>IP 주소</th><td>x.x.x.x</td></tr>
+<tr><th>관리자 권한</th><td>아니오 (일부 항목 확인필요로 표시)</td></tr>
+<tr><th>사용자</th><td>***</td></tr>
+<tr><th>운영체제</th><td>Microsoft Windows 11 Pro 25H2 (빌드 26200.9711, 에디션 Professional)</td></tr>
+<tr><th>점검 시각</th><td>2026-10-29 15:35:06 (PC 로컬 시간)</td></tr>
+<tr><th>컴퓨터 이름</th><td>PC-****</td></tr></table></div>
+<h2>점검 결과</h2>
+<div class="wrap"><table class="res">
+<thead><tr><th>ID</th><th>KISA</th><th>분류</th><th>항목</th><th>결과</th><th>현재 상태</th><th>판단 기준</th><th>조치 방법</th></tr></thead>
+<tbody>
+<tr class='ok'><td>EP-01</td><td>PC-11</td><td>패치 관리</td><td>OS 지원 버전 사용</td><td><span class='b ok'>양호</span></td><td>Microsoft Windows 11 Pro / 에디션 Professional / 빌드 26200.9711 (Windows 11 25H2, 지원 종료 2027-10-12)</td><td>보안 업데이트 지원 기간 안의 Windows 버전&#183;빌드 사용</td><td>지원 종료일 전에 다음 버전 전환 계획 수립</td></tr>
+<tr class='ok'><td>EP-02</td><td>PC-10</td><td>패치 관리</td><td>최신 보안 업데이트 적용</td><td><span class='b ok'>양호</span></td><td>마지막 설치 2026-10-18 KB5127648 (11 일 경과), 빌드 26200.9711</td><td>마지막 OS 업데이트 설치 후 35일 이내 (키트 기본값)</td><td>월별 정기 업데이트(매월 둘째 주 화요일, 미국 기준) 적용 유지</td></tr>
+<tr class='ok'><td>EP-03</td><td>PC-13</td><td>악성코드 방지</td><td>백신 설치 및 최신 업데이트</td><td><span class='b ok'>양호</span></td><td>Microsoft Defender 활성 (모드 Normal), 시그니처 1.463.16.0 갱신 2026-10-29 05:03 (0 일 경과) / 등록 제품: Windows Defender</td><td>백신 설치, 엔진(시그니처) 업데이트 1일 이내</td><td>자동 업데이트 유지</td></tr>
+<tr class='ok'><td>EP-04</td><td>PC-14</td><td>악성코드 방지</td><td>백신 실시간 감시</td><td><span class='b ok'>양호</span></td><td>Defender 실시간 보호 켜짐</td><td>백신 실시간 감시 사용</td><td>실시간 보호 끄기 권한을 사용자에게 주지 않음(변조 방지 사용)</td></tr>
+<tr class='bad'><td>EP-05</td><td>PC-15</td><td>네트워크 보호</td><td>Windows 방화벽 사용</td><td><span class='b bad'>취약</span></td><td>Domain=켜짐, Private=꺼짐, Public=꺼짐</td><td>도메인&#183;개인&#183;공용 프로필 모두 방화벽 사용</td><td>제어판 &gt; Windows Defender 방화벽 &gt; 방화벽 켜기/끄기에서 모든 프로필 사용. 조직은 GPO로 강제</td></tr>
+<tr class='bad'><td>EP-06</td><td>PC-16</td><td>접근 통제</td><td>화면보호기&#183;자동 잠금</td><td><span class='b bad'>취약</span></td><td>화면보호기 사용=1, 암호 보호=설정 없음, 대기=설정 없음</td><td>화면보호기(또는 화면잠금) 10분 이내 + 해제 시 암호 (키트 기본값)</td><td>설정 &gt; 개인 설정 &gt; 잠금 화면 &gt; 화면 보호기: 대기 10분 이하, &#39;다시 시작할 때 로그온 화면 표시&#39; 선택. 조직은 GPO(사용자 구성 &gt; 관리 템플릿 &gt; 제어판 &gt; 개인 설정) 또는 &#39;대화형 로그온: 컴퓨터 비활성 한도&#39;로 강제</td></tr>
+<tr class='ok'><td>EP-07</td><td>PC-01</td><td>계정 관리</td><td>비밀번호 주기적 변경</td><td><span class='b ok'>양호</span></td><td>최대 암호 사용 기간: 42 일</td><td>최대 암호 사용 기간 1~90 일</td><td>정책 유지</td></tr>
+<tr class='bad'><td>EP-08</td><td>PC-02</td><td>계정 관리</td><td>비밀번호 관리 정책</td><td><span class='b bad'>취약</span></td><td>최소 길이 0 자, 복잡성 확인 불가(관리자 권한 필요)</td><td>최소 암호 길이 8 자 이상, 복잡성 사용</td><td>secpol.msc &gt; 계정 정책 &gt; 암호 정책: 최소 암호 길이 8 이상, &#39;암호는 복잡성을 만족해야 함&#39; 사용</td></tr>
+<tr class='bad'><td>EP-09</td><td>-</td><td>계정 관리</td><td>계정 잠금 임계값</td><td><span class='b bad'>취약</span></td><td>계정 잠금 임계값: 사용 안 함</td><td>계정 잠금 임계값 1~10 회 (키트 기본값)</td><td>secpol.msc &gt; 계정 정책 &gt; 계정 잠금 정책 &gt; 계정 잠금 임계값 10 회 이하</td></tr>
+<tr class='ok'><td>EP-10</td><td>PC-12</td><td>계정 관리</td><td>자동 로그온 금지</td><td><span class='b ok'>양호</span></td><td>AutoAdminLogon=0, DefaultPassword 값 없음</td><td>AutoAdminLogon 사용 안 함, DefaultPassword 저장 없음</td><td>정책 유지</td></tr>
+<tr class='ok'><td>EP-11</td><td>-</td><td>계정 관리</td><td>Guest 계정 비활성화</td><td><span class='b ok'>양호</span></td><td>Guest(RID 501) 계정 사용 안 함</td><td>Guest 계정 사용 안 함</td><td>정책 유지</td></tr>
+<tr class='chk'><td>EP-12</td><td>-</td><td>계정 관리</td><td>관리자 그룹 최소화</td><td><span class='b chk'>확인필요</span></td><td>구성원 2 명: ***\Administrator, *** / 현재 사용자 포함</td><td>Administrators 그룹 구성원 최소화(2 명 이하), 일상 업무 계정은 표준 사용자</td><td>일상 업무용 계정은 표준 사용자로 바꾸고, 관리 작업은 별도 관리자 계정 또는 LAPS 관리 계정 사용</td></tr>
+<tr class='ok'><td>EP-13</td><td>PC-04</td><td>데이터 보호</td><td>공유 폴더 제거</td><td><span class='b ok'>양호</span></td><td>사용자 생성 공유 없음</td><td>업무상 필요 없는 공유 폴더 없음 (기본 관리 공유 C$&#183;ADMIN$&#183;IPC$ 제외)</td><td>정기 확인</td></tr>
+<tr class='bad'><td>EP-14</td><td>PC-17</td><td>매체 보안</td><td>이동식 미디어 자동 실행 방지</td><td><span class='b bad'>취약</span></td><td>HKCU NoDriveTypeAutoRun=0x91, DisableAutoplay=0</td><td>모든 드라이브 자동 실행 끔 (NoDriveTypeAutoRun=0xFF 또는 NoAutorun=1)</td><td>gpedit.msc &gt; 컴퓨터 구성 &gt; 관리 템플릿 &gt; Windows 구성 요소 &gt; 자동 실행 정책 &gt; &#39;자동 실행 끄기&#39; 사용, 대상 &#39;모든 드라이브&#39;</td></tr>
+<tr class='chk'><td>EP-15</td><td>PC-17</td><td>매체 보안</td><td>USB 저장장치 통제</td><td><span class='b chk'>확인필요</span></td><td>Windows 정책 통제 없음 (USBSTOR Start=3)</td><td>이동식 저장장치 쓰기(또는 전체) 통제 정책 적용, 또는 매체제어 솔루션 사용</td><td>매체제어(DLP) 솔루션 사용 여부 확인. 없으면 gpedit.msc &gt; 컴퓨터 구성 &gt; 관리 템플릿 &gt; 시스템 &gt; 이동식 저장소 액세스 &gt; &#39;이동식 디스크: 쓰기 권한 거부&#39; 사용</td></tr>
+<tr class='chk'><td>EP-16</td><td>-</td><td>데이터 보호</td><td>디스크 암호화(BitLocker)</td><td><span class='b chk'>확인필요</span></td><td>관리자 권한이 아니어서 확인 불가</td><td>시스템 드라이브 BitLocker(또는 장치 암호화) 보호 켜짐</td><td>관리자 PowerShell로 다시 실행하거나 제어판 &gt; BitLocker 드라이브 암호화에서 확인</td></tr>
+<tr class='ok'><td>EP-17</td><td>-</td><td>원격 접속</td><td>원격 데스크톱(RDP) 제한</td><td><span class='b ok'>양호</span></td><td>원격 데스크톱 꺼짐 (로컬)</td><td>원격 데스크톱 사용 안 함. 업무상 필요 시 NLA 사용, 허용 대상&#183;출발지 IP 제한</td><td>정책 유지</td></tr>
+<tr class='bad'><td>EP-18</td><td>PC-18</td><td>원격 접속</td><td>원격 지원 금지</td><td><span class='b bad'>취약</span></td><td>원격 지원 허용 (로컬, fAllowToGetHelp=1)</td><td>&#39;이 컴퓨터에 대한 원격 지원 연결 허용&#39; 해제</td><td>시스템 속성(sysdm.cpl) &gt; 원격 &gt; &#39;이 컴퓨터에 대한 원격 지원 연결 허용&#39; 해제. 조직은 GPO &#39;원격 지원 요청&#39;을 사용 안 함으로 설정</td></tr>
+<tr class='ok'><td>EP-19</td><td>-</td><td>네트워크 보호</td><td>SMBv1 비활성화</td><td><span class='b ok'>양호</span></td><td>서버 SMB1=사용 안 함, 클라이언트 드라이버(mrxsmb10)=없음</td><td>SMBv1 서버&#183;클라이언트 사용 안 함</td><td>정책 유지</td></tr>
+<tr class='ok'><td>EP-20</td><td>-</td><td>네트워크 보호</td><td>위험 포트 대기 여부</td><td><span class='b ok'>양호</span></td><td>외부 대기 포트 20 개, 키트 위험 목록 해당 없음</td><td>외부에 열린 평문&#183;원격관리&#183;DB 포트 없음 (루프백 제외)</td><td>정기 확인</td></tr>
+<tr class='bad'><td>EP-21</td><td>PC-07</td><td>데이터 보호</td><td>NTFS 파일 시스템 사용</td><td><span class='b bad'>취약</span></td><td>C: NTFS, D: FAT32, E: NTFS, G: FAT32</td><td>고정 디스크 파일 시스템 NTFS(또는 ReFS)</td><td>데이터 백업 후 convert 드라이브: /fs:ntfs 로 변환(관리자 판단 하에 별도 작업)</td></tr>
+</tbody></table></div>
+<p class="note">KISA 열은 주요정보통신기반시설 취약점 분석·평가 기준(PC 항목) 번호이며, 빈 칸(-)은 키트 자체 항목임. 판단 기준 중 '키트 기본값'은 조직 정책에 맞춰 스크립트 상단 설정에서 조정. 이 보고서는 설정값을 읽어 만든 것으로 침투 시험 결과가 아님.</p>
+</body></html>
